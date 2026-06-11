@@ -1,8 +1,15 @@
 {
 	"FileVersion": 3,
 	"EngineAssociation": "5.7",
-	"Category": "",
-	"Description": "",
+	"Category": "Simulation",
+	"Description": "Nelayan - Indonesian Ocean Fishing Simulator",
+	"Modules": [
+		{
+			"Name": "Gameku",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	],
 	"Plugins": [
 		{
 			"Name": "DatasmithImporter",
