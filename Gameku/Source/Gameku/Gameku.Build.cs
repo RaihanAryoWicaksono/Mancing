@@ -6,6 +6,9 @@ public class Gameku : ModuleRules
     {
         PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
 
+        // Tambah module root agar subfolder include (Core/, Fishing/, dll) bisa resolve
+        PublicIncludePaths.Add(ModuleDirectory);
+
         PublicDependencyModuleNames.AddRange(new string[]
         {
             "Core",

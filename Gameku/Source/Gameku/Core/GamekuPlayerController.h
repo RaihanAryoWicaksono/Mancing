@@ -2,9 +2,8 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/PlayerController.h"
+#include "Blueprint/UserWidget.h"
 #include "GamekuPlayerController.generated.h"
-
-class UFishingHUD;
 
 UCLASS()
 class GAMEKU_API AGamekuPlayerController : public APlayerController
