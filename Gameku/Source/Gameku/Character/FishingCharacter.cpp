@@ -39,16 +39,8 @@ AFishingCharacter::AFishingCharacter()
 void AFishingCharacter::BeginPlay()
 {
     Super::BeginPlay();
-
-    if (APlayerController* PC = Cast<APlayerController>(Controller))
-    {
-        if (UEnhancedInputLocalPlayerSubsystem* Subsystem =
-            ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(PC->GetLocalPlayer()))
-        {
-            Subsystem->AddMappingContext(DefaultMappingContext, 0);
-        }
-    }
 }
+
 
 void AFishingCharacter::Tick(float DeltaTime)
 {
@@ -58,6 +50,15 @@ void AFishingCharacter::Tick(float DeltaTime)
 
 void AFishingCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
+    if (APlayerController* PC = Cast<APlayerController>(Controller))
+    {
+        if (UEnhancedInputLocalPlayerSubsystem* Subsystem =
+            ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(PC->GetLocalPlayer()))
+        {
+            Subsystem->AddMappingContext(DefaultMappingContext, 0);
+        }
+    }
+
     if (UEnhancedInputComponent* EIC = Cast<UEnhancedInputComponent>(PlayerInputComponent))
     {
         EIC->BindAction(JumpAction, ETriggerEvent::Started, this, &ACharacter::Jump);

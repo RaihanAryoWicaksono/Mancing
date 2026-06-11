@@ -3,44 +3,13 @@ import unreal
 eal      = unreal.EditorAssetLibrary
 registry = unreal.AssetRegistryHelpers.get_asset_registry()
 
-# ── 1. Cari Skeletal Mesh di project ─────────────────────────────────
-unreal.log("[Mesh] Mencari Skeletal Mesh di /Game/ ...")
-
-ar_filter = unreal.ARFilter(
-    class_names=["SkeletalMesh"],
-    recursive_paths=True,
-    package_paths=["/Game/"]
-)
-found_meshes = registry.get_assets(ar_filter)
-
-if found_meshes:
-    unreal.log(f"[Mesh] Ditemukan {len(found_meshes)} Skeletal Mesh:")
-    for asset in found_meshes:
-        unreal.log(f"[Mesh]   {asset.package_name}")
+# ── 1. Load Mannequin mesh langsung ──────────────────────────────────
+chosen_path = "/Game/Characters/Mannequins/Meshes/SKM_Manny_Simple"
+chosen_mesh = unreal.load_asset(chosen_path)
+if chosen_mesh:
+    unreal.log(f"[Mesh] Loaded: {chosen_path}")
 else:
-    unreal.log_warning("[Mesh] Tidak ada Skeletal Mesh di /Game/")
-
-# Prioritas: cari Mannequin
-preferred_keywords = ["manny", "mannequin", "character", "hero", "player"]
-chosen_mesh = None
-chosen_path = None
-
-for asset in found_meshes:
-    name_lower = str(asset.asset_name).lower()
-    for kw in preferred_keywords:
-        if kw in name_lower:
-            chosen_path = str(asset.package_name)
-            chosen_mesh = unreal.load_asset(chosen_path)
-            unreal.log(f"[Mesh] Dipilih: {chosen_path}")
-            break
-    if chosen_mesh:
-        break
-
-# Fallback: pakai mesh pertama yang ditemukan
-if not chosen_mesh and found_meshes:
-    chosen_path = str(found_meshes[0].package_name)
-    chosen_mesh = unreal.load_asset(chosen_path)
-    unreal.log(f"[Mesh] Fallback ke: {chosen_path}")
+    unreal.log_warning(f"[Mesh] Gagal load: {chosen_path}")
 
 # ── 2. Assign mesh ke BP_FishingCharacter ─────────────────────────────
 bp_char_class = unreal.load_class(
