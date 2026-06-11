@@ -2,6 +2,7 @@
 #include "Fishing/FishingRodComponent.h"
 #include "Inventory/InventoryComponent.h"
 #include "Progression/SkillTreeComponent.h"
+#include "Interfaces/InteractableInterface.h"
 #include "Camera/CameraComponent.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"

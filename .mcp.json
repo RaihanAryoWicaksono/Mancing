@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "unreal-mcp": {
+      "command": "python",
+      "args": [
+        "C:\\Users\\raiha\\unreal-mcp\\Python\\unreal_mcp_server.py"
+      ],
+      "env": {}
+    }
+  }
+}

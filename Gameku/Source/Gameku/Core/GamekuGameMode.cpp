@@ -1,6 +1,6 @@
 #include "Core/GamekuGameMode.h"
 #include "Character/FishingCharacter.h"
-#include "GamekuPlayerController.h"
+#include "Core/GamekuPlayerController.h"
 #include "Environment/FishingZone.h"
 #include "UObject/ConstructorHelpers.h"
 
